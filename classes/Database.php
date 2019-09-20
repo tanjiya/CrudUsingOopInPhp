@@ -4,7 +4,7 @@ class Database {
     //Database Connection
     private $db_server = "mysql:dbname=crud_oop_in_php; host=localhost";
     private $user_name = "root"; 
-    private $password  = "password";
+    private $password  = "root";
     protected $connection;
         
     public function __construct() {
