@@ -15,18 +15,8 @@ if(isset($_REQUEST['record_add_status'])):
     echo "<p>Record has added successfully..!</p>";
 elseif(isset($_REQUEST['record_update_status'])):
     echo "<p>Record has updated successfully..!</p>";
-endif;
-
-//Delete Record form Database
-if($_SERVER['REQUEST_METHOD'] == "POST"):
-    $crud->id = $_POST['id'];
-    $delete_data = $crud->delete($id); var_dump();
-
-    if($delete_data):
-        echo "<p>Record has deleted successfully..!</p>";
-    else:
-        echo "<p>Unable to delete record!</p>";
-    endif;
+elseif(isset($_REQUEST['record_delete_status'])):
+    echo "<p>Record has deleted successfully..!</p>";
 endif;
 
 if(!empty($show_data)):
@@ -54,9 +44,8 @@ if(!empty($show_data)):
                         <a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a>
                     </td>
                     <td>
-                        <a href="index.php?del=<?php echo htmlentities($data['id']);?>">
-                            <button onClick="return confirm('Do you really want to delete');">Delete<button>
-                        </a>
+                        <!-- <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a> -->
+                        <a href="delete.php?id=<?php echo htmlentities($data['id']);?>">Delete</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

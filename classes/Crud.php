@@ -129,9 +129,9 @@ class Crud extends Database Implements CrudInterface {
     public function delete()
     {
         try {
-            $db_query  = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+            $db_query  = "DELETE FROM " . $this->table_name . " WHERE id = :id";
             $statement = $this->connection->prepare($db_query);
-            $statement->bindParam(1, $this->id, PDO::PARAM_INT);
+            $statement->bindParam(':id', $this->id, PDO::PARAM_INT);
             $statement->execute();
 
             return true;
